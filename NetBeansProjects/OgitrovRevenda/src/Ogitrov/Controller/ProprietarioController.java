@@ -12,7 +12,7 @@ package Ogitrov.Controller;
 public class ProprietarioController {
 
     public boolean cadastraFuncionario(String nome, String email, String endereco, String dataNascimento, String text3) {
-        //dsa
+        
         
         
     }
