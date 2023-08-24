@@ -1,0 +1,103 @@
+
+package Ogitrov.Model;
+
+import Ogitrov.DAO.FuncionarioDAO;
+
+
+public class Funcionario {
+    
+    private int Id;
+    private String Nome;
+    private String Email;
+    private String Endereco;
+    private String DataNascimento;
+    private double Salario;
+    private String Senha;
+
+    public Funcionario(String Nome, String Email, String Endereco, String DataNascimento, double Salario, String Senha) {
+        this.Nome = Nome;
+        this.Email = Email;
+        this.Endereco = Endereco;
+        this.DataNascimento = DataNascimento;
+        this.Salario = Salario;
+        this.Senha = Senha;
+    }
+
+    public Funcionario(String Email, String Senha) {
+        this.Email = Email;
+        this.Senha = Senha;
+    }
+
+
+
+    public String getSenha() {
+        return Senha;
+    }
+
+    public void setSenha(String Senha) {
+        this.Senha = Senha;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getEndereco() {
+        return Endereco;
+    }
+
+    public void setEndereco(String Endereco) {
+        this.Endereco = Endereco;
+    }
+
+    public String getDataNascimento() {
+        return DataNascimento;
+    }
+
+    public void setDataNascimento(String DataNascimento) {
+        this.DataNascimento = DataNascimento;
+    }
+
+    public double getSalario() {
+        return Salario;
+    }
+
+    public void setSalario(double Salario) {
+        this.Salario = Salario;
+    }
+    
+    public void cadastrarFuncionario(Funcionario funcionario){
+        FuncionarioDAO fDAO = new FuncionarioDAO();
+        fDAO.cadastrarFuncionario(funcionario);
+    }
+    public boolean veriFuncionario(String email, String senha){
+     //   try{
+        FuncionarioDAO fDAO = new FuncionarioDAO();
+        
+        return fDAO.PesquisarEmail(email,senha);
+  //      }catch(Exception e){
+     //       return false;
+   //     }
+    }
+            
+}
