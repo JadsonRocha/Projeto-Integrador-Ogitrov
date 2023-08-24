@@ -5,6 +5,8 @@ package Ogitrov.Model;
 public class Proprietario {
     
     private int Id;
+
+    
     private String Nome;
     private String Email;
     private String Endereco;
@@ -56,6 +58,14 @@ public class Proprietario {
     }
 
     public void setTelefone(String Telefone) {
+        this.Telefone = Telefone;
+    }
+    
+    public Proprietario(String Nome, String Email, String Endereco, String DataNascimento, String Telefone) {
+        this.Nome = Nome;
+        this.Email = Email;
+        this.Endereco = Endereco;
+        this.DataNascimento = DataNascimento;
         this.Telefone = Telefone;
     }
 }

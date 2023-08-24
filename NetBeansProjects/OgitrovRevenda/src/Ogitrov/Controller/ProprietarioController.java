@@ -10,5 +10,11 @@ package Ogitrov.Controller;
  * @author 182210124
  */
 public class ProprietarioController {
+
+    public boolean cadastraFuncionario(String nome, String email, String endereco, String dataNascimento, String text3) {
+        //dsa
+        
+        
+    }
     
 }
