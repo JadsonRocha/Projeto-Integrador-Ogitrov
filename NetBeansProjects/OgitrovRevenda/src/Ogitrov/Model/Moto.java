@@ -1,9 +1,13 @@
 
 package Ogitrov.Model;
 
+import Ogitrov.DAO.MotoDAO;
+
 
 public class Moto {
     private int Id;
+
+    
     private int IdProprietario;
     private String Marca;
     private String Modelo;
@@ -14,8 +18,27 @@ public class Moto {
     private double ValorAvaliado;
     private double IPVA ;
     private String KmRodados;
+
+    
     private String TipoMoto;
 
+    public Moto(int IdProprietario, String Marca, String Modelo, String Cor, String AnoFabricacao, String Chassi, double Fipe, double ValorAvaliado, double IPVA, String KmRodados, String TipoMoto) {
+        this.IdProprietario = IdProprietario;
+        this.Marca = Marca;
+        this.Modelo = Modelo;
+        this.Cor = Cor;
+        this.AnoFabricacao = AnoFabricacao;
+        this.Chassi = Chassi;
+        this.Fipe = Fipe;
+        this.ValorAvaliado = ValorAvaliado;
+        this.IPVA = IPVA;
+        this.KmRodados = KmRodados;
+        this.TipoMoto = TipoMoto;
+    }
+
+    
+
+    
     public int getId() {
         return Id;
     }
@@ -111,4 +134,11 @@ public class Moto {
     public void setTipoMoto(String TipoMoto) {
         this.TipoMoto = TipoMoto;
     }
+
+    public void cadastrarMoto(Moto mot) {
+        MotoDAO mDAO = new MotoDAO();
+        mDAO.CadastrarMotoDAO(mot);
+    }
+    
+    
 }

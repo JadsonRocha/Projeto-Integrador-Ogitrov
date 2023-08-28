@@ -1,6 +1,8 @@
 
 package Ogitrov.Model;
 
+import Ogitrov.DAO.ProprietarioDAO;
+
 
 public class Proprietario {
     
@@ -67,5 +69,10 @@ public class Proprietario {
         this.Endereco = Endereco;
         this.DataNascimento = DataNascimento;
         this.Telefone = Telefone;
+    }
+
+    public void cadastrarPropi(Proprietario propi) {
+        ProprietarioDAO pDAO = new ProprietarioDAO();
+        pDAO.cadastrarProprietario(propi);
     }
 }

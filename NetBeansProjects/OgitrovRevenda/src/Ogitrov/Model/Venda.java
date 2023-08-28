@@ -1,6 +1,8 @@
 
 package Ogitrov.Model;
 
+import Ogitrov.DAO.VendaDAO;
+
 
 public class Venda {
     
@@ -10,7 +12,18 @@ public class Venda {
     private int IdMoto;
     private double Comissao;
     private String FormaPagamento;
+
+    public Venda(int IdFuncionario, int IdCarro, int IdMoto, double Comissao, String FormaPagamento, double Valor) {
+        this.IdFuncionario = IdFuncionario;
+        this.IdCarro = IdCarro;
+        this.IdMoto = IdMoto;
+        this.Comissao = Comissao;
+        this.FormaPagamento = FormaPagamento;
+        this.Valor = Valor;
+    }
     private double Valor;
+
+    
 
     public int getId() {
         return Id;
@@ -31,7 +44,7 @@ public class Venda {
     public int getIdCarro() {
         return IdCarro;
     }
-
+//
     public void setIdCarro(int IdCarro) {
         this.IdCarro = IdCarro;
     }
@@ -66,6 +79,11 @@ public class Venda {
 
     public void setValor(double Valor) {
         this.Valor = Valor;
+    }
+
+    public void cadastrarVenda(Venda venda) {
+        VendaDAO vDAO = new VendaDAO();
+        vDAO.cadastraVenda(venda);
     }
    
 }
