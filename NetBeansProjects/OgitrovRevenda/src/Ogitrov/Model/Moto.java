@@ -36,6 +36,25 @@ public class Moto {
         this.TipoMoto = TipoMoto;
     }
 
+    public Moto(int idMoto, int idProp, String marca, String modelo, String cor, String ano, String chassi, double fipe, double valorAvaliado, double ipva, String km, String tipo) {
+        this.Id = idMoto;
+        this.IdProprietario = idProp;
+        this.Marca = marca;
+        this.Modelo = modelo;
+        this.Cor = cor;
+        this.AnoFabricacao = ano;
+        this.Chassi = chassi;
+        this.Fipe = fipe;
+        this.ValorAvaliado = valorAvaliado;
+        this.IPVA = ipva;
+        this.KmRodados = km;
+        this.TipoMoto = tipo;
+    }
+
+    public Moto(int idMoto) {
+        this.Id = idMoto;
+    }
+
     
 
     
@@ -138,6 +157,16 @@ public class Moto {
     public void cadastrarMoto(Moto mot) {
         MotoDAO mDAO = new MotoDAO();
         mDAO.CadastrarMotoDAO(mot);
+    }
+
+    public void editarMoto(Moto mot) {
+        MotoDAO mDAO = new MotoDAO();
+        mDAO.editarMotoDAO(mot);
+    }
+
+    public void excluirMoto(Moto mot) {
+        MotoDAO mDAO = new MotoDAO();
+        mDAO.excluirMotoDAO(mot);
     }
     
     

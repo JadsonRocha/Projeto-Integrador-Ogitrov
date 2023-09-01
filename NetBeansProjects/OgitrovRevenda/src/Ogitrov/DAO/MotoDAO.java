@@ -13,6 +13,16 @@ public class MotoDAO {
         ConnectionMVC.executar(sql);
     }
 
+    public void editarMotoDAO(Moto mot) {
+        String sql = "UPDATE moto SET FK_IdProprietario = '" + mot.getIdProprietario() + "', Marca = '" + mot.getMarca() + "', Modelo = '" + mot.getModelo() + "', Cor = '" + mot.getCor() + "', AnoFabricacao = '" + mot.getAnoFabricacao() + "', Chassi = '" + mot.getChassi() + "', Fipe = '" + mot.getFipe() + "', ValorAvaliado = '" + mot.getValorAvaliado() + "', IPVA = '" + mot.getIPVA() + "', KmRodados = '" + mot.getKmRodados() + "', TipoMoto = '" + mot.getTipoMoto() + "' WHERE ID = '" + mot.getId() + "'";
+        ConnectionMVC.executar(sql);
+    }
+
+    public void excluirMotoDAO(Moto mot) {
+        String sql = "DELETE FROM moto WHERE Id = " + mot.getId();
+        ConnectionMVC.executar(sql);
+    }
+
 
     
             

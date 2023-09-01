@@ -2,6 +2,7 @@
 package Ogitrov.Model;
 
 import Ogitrov.DAO.CarroDAO;
+import java.util.ArrayList;
 
 
 public class Carro {
@@ -23,6 +24,11 @@ public class Carro {
     private String Cambio;
 
     
+
+    public Carro() {
+        
+    }
+
     
     public int getId() {
         return Id;
@@ -136,6 +142,7 @@ public class Carro {
         this.Cambio = Cambio;
     }
     
+    public Carro(int idCarro){this.Id = idCarro;}
     
     public Carro(int IdProprietario, String Marca, String Modelo, String Cor, String AnoFabricacao, String Chassi, double Fipe, double ValorAvaliado, double IPVA, String KmRodados, String TipoCarro, String Combustivel, String Cambio) {
         this.IdProprietario = IdProprietario;
@@ -152,9 +159,44 @@ public class Carro {
         this.Combustivel = Combustivel;
         this.Cambio = Cambio;
     }
+    
+    public Carro(int idCarro, int idPropi, String marca, String modelo, String cor, String ano, String chassi, double fipe, double valorAvaliado, double ipva, String km, String tipo, String combustivel, String cambio) {
+        this.Id = idCarro;
+        this.IdProprietario = idPropi;
+        this.Marca = marca;
+        this.Modelo = modelo;
+        this.Cor = cor;
+        this.AnoFabricacao = ano;
+        this.Chassi = chassi;
+        this.Fipe = fipe;
+        this.ValorAvaliado = valorAvaliado;
+        this.IPVA = ipva;
+        this.KmRodados = km;
+        this.TipoCarro = tipo;
+        this.Combustivel = combustivel;
+        this.Cambio = cambio;
+    }
 
     public void cadastrarCarro(Carro carro) {
         CarroDAO cDAO = new CarroDAO();
         cDAO.cadastrarCarro(carro);
     }
+
+    public void editaCarro(Carro carro) {
+        CarroDAO cDAO = new CarroDAO();
+        cDAO.editaCarro(carro);
+    }
+
+    public void excluirCarro(Carro carro) {
+        CarroDAO cDAO = new CarroDAO();
+        cDAO.excluirCarro(carro);
+    }
+
+    public ArrayList<Carro> listarCarro() {
+
+        CarroDAO cDAO = new CarroDAO();
+        return cDAO.listarCarro();
+    }
+    
+   
 }

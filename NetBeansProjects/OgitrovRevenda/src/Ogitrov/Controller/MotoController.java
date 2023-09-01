@@ -19,6 +19,18 @@ public class MotoController {
         return true;
     }
 
+    public boolean editarMoto(int idMoto, int idProp, String marca, String modelo, String cor, String ano, String chassi, double fipe, double valorAvaliado, double ipva, String km, String tipo) {
+        Moto mot = new Moto(idMoto,idProp,marca,modelo,cor,ano,chassi,fipe,valorAvaliado,ipva,km,tipo);
+        mot.editarMoto(mot); 
+        return true;
+    }
+
+    public boolean excluirMoto(int idMoto) {
+        Moto mot = new Moto(idMoto);
+        mot.excluirMoto(mot); 
+        return true;
+    }
+
         
     
 }
