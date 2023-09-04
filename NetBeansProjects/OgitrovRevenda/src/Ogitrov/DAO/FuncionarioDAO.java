@@ -17,12 +17,12 @@ public class FuncionarioDAO {
     
     public boolean PesquisarEmail (String email, String senha){
         String sql = "SELECT Email, Senha FROM funcionario WHERE Email = '"  + email+ "' AND Senha = '" + senha + "'";
-        System.out.println(sql);
+        
         ResultSet rs = ConnectionMVC.consultar(sql);
         try{
             rs.next();
         String mail = rs.getString("Email");
-            System.out.println("mail :"+mail);
+            
         if(rs != null)
             return true;
         }catch(Exception e)

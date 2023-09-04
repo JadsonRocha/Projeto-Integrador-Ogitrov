@@ -9,6 +9,7 @@ import Ogitrov.Controller.CarroController;
 import Ogitrov.Model.Carro;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -139,13 +140,10 @@ public class CRUDCarros extends javax.swing.JFrame {
 
         TabelaCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Id Proprietario", "Marca", "Modelo", "Cor", "Ano Fabricação", "Chassi", "Fipe", "Valor Avaliado", "IPVA", "KM rodados", "Tipo Do carro", "Combustivel", "Cambio"
             }
         ));
         jScrollPane1.setViewportView(TabelaCarro);
@@ -202,7 +200,7 @@ public class CRUDCarros extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton3)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1327, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -214,7 +212,7 @@ public class CRUDCarros extends javax.swing.JFrame {
                             .addComponent(IdPropi, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MarcaCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IdCarro, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,11 +355,28 @@ public class CRUDCarros extends javax.swing.JFrame {
     }//GEN-LAST:event_IdCarroActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-        
         CarroController carroController = new CarroController();
-        ArrayList<Carro> CarroList = carroController.listarCarros();
-        
+        ArrayList<Carro> carroList = carroController.listarCarros();
+        DefaultTableModel modelo = (DefaultTableModel) TabelaCarro.getModel();
+
+        for (Carro carro : carroList) {
+            String[] coluna = new String[14]; // Supondo que há 13 propriedades em um objeto Carro
+            coluna[0] = String.valueOf(carro.getId());
+            coluna[1] = String.valueOf(carro.getIdProprietario());
+            coluna[2] = carro.getMarca();
+            coluna[3] = carro.getModelo();
+            coluna[4] = carro.getCor();
+            coluna[5] = carro.getAnoFabricacao();
+            coluna[6] = carro.getChassi();
+            coluna[7] = String.valueOf(carro.getFipe());
+            coluna[8] = String.valueOf(carro.getValorAvaliado());
+            coluna[9] = String.valueOf(carro.getIPVA());
+            coluna[10] = carro.getKmRodados();
+            coluna[11] = carro.getTipoCarro();
+            coluna[12] = carro.getCombustivel();
+            coluna[13] = carro.getCambio();
+            modelo.addRow(coluna);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

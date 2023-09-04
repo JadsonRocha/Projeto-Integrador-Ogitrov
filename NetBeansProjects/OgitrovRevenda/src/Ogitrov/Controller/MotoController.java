@@ -6,6 +6,7 @@
 package Ogitrov.Controller;
 
 import Ogitrov.Model.Moto;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,6 +30,11 @@ public class MotoController {
         Moto mot = new Moto(idMoto);
         mot.excluirMoto(mot); 
         return true;
+    }
+
+    public ArrayList<Moto> listarMotos() {
+        Moto moto = new Moto();
+        return moto.listarMoto();
     }
 
         

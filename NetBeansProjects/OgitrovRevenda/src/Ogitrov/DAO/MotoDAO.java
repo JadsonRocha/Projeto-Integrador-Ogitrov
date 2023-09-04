@@ -2,6 +2,8 @@
 package Ogitrov.DAO;
 
 import Ogitrov.Model.Moto;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 public class MotoDAO {
@@ -21,6 +23,34 @@ public class MotoDAO {
     public void excluirMotoDAO(Moto mot) {
         String sql = "DELETE FROM moto WHERE Id = " + mot.getId();
         ConnectionMVC.executar(sql);
+    }
+
+    public ArrayList<Moto> listarMoto() {
+        ArrayList<Moto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM moto";
+        ResultSet rs = ConnectionMVC.consultar(sql);
+        if(rs != null){
+            try{
+                while( rs.next() ){
+                    int id = rs.getInt("Id");
+                    int idProp = rs.getInt("FK_IdProprietario");
+                    String marca = rs.getString("Marca");
+                    String modelo = rs.getString("Modelo");
+                    String cor = rs.getString("Cor");
+                    String ano = rs.getString("AnoFabricacao");
+                    String chassi = rs.getString("Chassi");
+                    double fipe = rs.getDouble("Fipe");
+                    double valorAvaliado = rs.getDouble("ValorAvaliado");
+                    double ipva = rs.getDouble("IPVA");
+                    String km = rs.getString("KmRodados");
+                    String tipo = rs.getString("TipoMoto");
+                    Moto mot = new Moto(id,idProp,marca,modelo,cor,ano,chassi,fipe,valorAvaliado,ipva,km,tipo);
+                    lista.add(mot);
+                }
+            }catch(Exception e){
+            }
+        }
+        return lista;
     }
 
 

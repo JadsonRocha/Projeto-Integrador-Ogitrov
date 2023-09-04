@@ -2,6 +2,7 @@
 package Ogitrov.Model;
 
 import Ogitrov.DAO.MotoDAO;
+import java.util.ArrayList;
 
 
 public class Moto {
@@ -18,10 +19,11 @@ public class Moto {
     private double ValorAvaliado;
     private double IPVA ;
     private String KmRodados;
-
-    
     private String TipoMoto;
 
+    
+    public Moto() {
+    }
     public Moto(int IdProprietario, String Marca, String Modelo, String Cor, String AnoFabricacao, String Chassi, double Fipe, double ValorAvaliado, double IPVA, String KmRodados, String TipoMoto) {
         this.IdProprietario = IdProprietario;
         this.Marca = Marca;
@@ -167,6 +169,11 @@ public class Moto {
     public void excluirMoto(Moto mot) {
         MotoDAO mDAO = new MotoDAO();
         mDAO.excluirMotoDAO(mot);
+    }
+
+    public ArrayList<Moto> listarMoto() {
+        MotoDAO mDAO = new MotoDAO();
+        return mDAO.listarMoto();
     }
     
     

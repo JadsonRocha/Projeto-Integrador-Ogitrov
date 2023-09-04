@@ -6,7 +6,11 @@
 package Ogitrov.View;
 
 import Ogitrov.Controller.MotoController;
+import Ogitrov.Model.Carro;
+import Ogitrov.Model.Moto;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -38,8 +42,6 @@ public class CRUDMotos extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         IdPropri = new javax.swing.JTextField();
         MarcaMoto = new javax.swing.JTextField();
         CorMoto = new javax.swing.JTextField();
@@ -60,6 +62,8 @@ public class CRUDMotos extends javax.swing.JFrame {
         Editar = new javax.swing.JButton();
         IdMoto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelaMoto = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -68,6 +72,11 @@ public class CRUDMotos extends javax.swing.JFrame {
         jLabel9.setText("KM Rodados :");
 
         jButton3.setText("Listar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("IPVA :");
@@ -90,19 +99,6 @@ public class CRUDMotos extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel13.setText("Chassi :");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Marca :");
@@ -135,6 +131,16 @@ public class CRUDMotos extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("ID Moto(editar e excluir) :");
+
+        TabelaMoto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Id Proprietario", "Marca", "Modelo", "Cor", "Ano Fabricação", "Chassi", "Fipe", "Valor Avaliado", "IPVA", "KM rodados", "Tipo Do carro"
+            }
+        ));
+        jScrollPane2.setViewportView(TabelaMoto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,14 +193,14 @@ public class CRUDMotos extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1047, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -251,7 +257,7 @@ public class CRUDMotos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -315,6 +321,29 @@ public class CRUDMotos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ExcluirActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        MotoController motoController = new MotoController();
+        ArrayList<Moto> motoList = motoController.listarMotos();
+        DefaultTableModel modelo = (DefaultTableModel) TabelaMoto.getModel();
+        
+        for (Moto moto : motoList) {
+            String[] coluna = new String[12]; // Supondo que há 13 propriedades em um objeto Carro
+            coluna[0] = String.valueOf(moto.getId());
+            coluna[1] = String.valueOf(moto.getIdProprietario());
+            coluna[2] = moto.getMarca();
+            coluna[3] = moto.getModelo();
+            coluna[4] = moto.getCor();
+            coluna[5] = moto.getAnoFabricacao();
+            coluna[6] = moto.getChassi();
+            coluna[7] = String.valueOf(moto.getFipe());
+            coluna[8] = String.valueOf(moto.getValorAvaliado());
+            coluna[9] = String.valueOf(moto.getIPVA());
+            coluna[10] = moto.getKmRodados();
+            coluna[11] = moto.getTipoMoto();
+            modelo.addRow(coluna);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +393,7 @@ public class CRUDMotos extends javax.swing.JFrame {
     private javax.swing.JTextField KmMoto;
     private javax.swing.JTextField MarcaMoto;
     private javax.swing.JTextField ModeloMoto;
+    private javax.swing.JTable TabelaMoto;
     private javax.swing.JTextField TipoMoto;
     private javax.swing.JTextField ValorAvaliadoMoto;
     private javax.swing.JButton jButton3;
@@ -379,7 +409,6 @@ public class CRUDMotos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
