@@ -28,6 +28,20 @@ public class Funcionario {
         this.Senha = Senha;
     }
 
+    public Funcionario(int id, String nome, String email, String endereco, String datanascimento, double salario, String senha) {
+        this.Id = id;
+        this.Nome = nome;
+        this.Email = email;
+        this.Endereco = endereco;
+        this.DataNascimento = datanascimento;
+        this.Salario = salario;
+        this.Senha = senha;
+    }
+
+    public Funcionario(int idFunc) {
+        this.Id = idFunc;
+    }
+
 
 
     public String getSenha() {
@@ -98,6 +112,16 @@ public class Funcionario {
   //      }catch(Exception e){
      //       return false;
    //     }
+    }
+
+    public void EditarFuncionario(Funcionario func) {
+        FuncionarioDAO fDAO = new FuncionarioDAO();
+        fDAO.editaFuncionario(func);
+    }
+
+    public void ExcluirFuncionario(Funcionario func) {
+        FuncionarioDAO fDAO = new FuncionarioDAO();
+        fDAO.excluirFuncionario(func);
     }
             
 }

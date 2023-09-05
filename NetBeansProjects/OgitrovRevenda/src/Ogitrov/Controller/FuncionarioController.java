@@ -23,4 +23,16 @@ public class FuncionarioController {
         }
         return false;
     }
+
+    public boolean editaFuncionario(int id, String nome, String email, String endereco, String datanascimento, double salario, String senha) {
+        Funcionario func = new Funcionario(id,nome,email,endereco,datanascimento,salario,senha);
+        func.EditarFuncionario(func);
+        return true;
+    }
+
+    public boolean excluirFuncionario(int idFunc) {
+        Funcionario func = new Funcionario(idFunc);
+        func.ExcluirFuncionario(func);
+        return true;
+    }
 }

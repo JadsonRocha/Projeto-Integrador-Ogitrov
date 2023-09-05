@@ -31,6 +31,16 @@ public class FuncionarioDAO {
         }
         return false;
     }
+
+    public void editaFuncionario(Funcionario func) {
+        String sql = "UPDATE funcionario SET Nome = '" + func.getNome()+ "', Email = '" + func.getEmail()+ "', Endereco = '" + func.getEndereco()+ "', DataNascimento = '" + func.getDataNascimento()+ "', Salario = '" + func.getSalario()+ "', Senha = '" + func.getSenha()+ "' WHERE Id = '" + func.getId()+ "'";
+        ConnectionMVC.executar(sql);
+    }
+
+    public void excluirFuncionario(Funcionario func) {
+        String sql = "DELETE FROM funcionario WHERE Id = " + func.getId();
+        ConnectionMVC.executar(sql);
+    }
     
    
 

@@ -12,8 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/DAO/FuncionarioDAO.java</file>
+            <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/Controller/FuncionarioController.java</file>
+            <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/View/Administracao.java</file>
             <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/Controller/CarroController.java</file>
             <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/View/CRUDCarros.java</file>
+            <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/Model/Funcionario.java</file>
             <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/DAO/CarroDAO.java</file>
             <file>file:/C:/Users/182210124/Documents/NetBeansProjects/OgitrovRevenda/src/Ogitrov/Model/Carro.java</file>
         </group>

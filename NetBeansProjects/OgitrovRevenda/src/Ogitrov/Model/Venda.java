@@ -2,6 +2,7 @@
 package Ogitrov.Model;
 
 import Ogitrov.DAO.VendaDAO;
+import java.util.ArrayList;
 
 
 public class Venda {
@@ -11,6 +12,9 @@ public class Venda {
     private int IdCarro;
     private int IdMoto;
     private double Comissao;
+
+    public Venda() {
+    }
     private String FormaPagamento;
 
     public Venda(int IdFuncionario, int IdCarro, int IdMoto, double Comissao, String FormaPagamento, double Valor) {
@@ -22,6 +26,16 @@ public class Venda {
         this.Valor = Valor;
     }
     private double Valor;
+
+    public Venda(int id, int idFunci, int idCarro, int idMoto, double comissao, String formaPagamento, double valor) {
+        this.Id = id;
+        this.IdFuncionario = idFunci;
+        this.IdCarro = idCarro;
+        this.IdMoto = idMoto;
+        this.Comissao = comissao;
+        this.FormaPagamento = formaPagamento;
+        this.Valor = valor;
+    }
 
     
 
@@ -84,6 +98,11 @@ public class Venda {
     public void cadastrarVenda(Venda venda) {
         VendaDAO vDAO = new VendaDAO();
         vDAO.cadastraVenda(venda);
+    }
+
+    public ArrayList<Venda> listarVendas() {
+        VendaDAO vDAO = new VendaDAO();
+        return vDAO.listarVendas();
     }
    
 }
