@@ -6,7 +6,10 @@
 package Ogitrov.View;
 
 import Ogitrov.Controller.FuncionarioController;
+import Ogitrov.Model.Funcionario;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,7 +34,7 @@ public class Administracao extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TabelaFunc = new javax.swing.JTable();
         SalarioFuncionario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -50,10 +53,11 @@ public class Administracao extends javax.swing.JFrame {
         senhaFuncionario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaFunc.setForeground(new java.awt.Color(0, 102, 0));
+        TabelaFunc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -61,23 +65,29 @@ public class Administracao extends javax.swing.JFrame {
                 "ID", "Nome", "Email", "Endereço", "Data Nascimento", "Salario"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TabelaFunc);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setText("Nome :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 0));
         jLabel2.setText("Email :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 0));
         jLabel3.setText("Data de Nascimento :");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 0));
         jLabel4.setText("Endereço :");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 0));
         jLabel5.setText("Salario :");
 
+        jButton1.setForeground(new java.awt.Color(0, 102, 0));
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,8 +96,10 @@ public class Administracao extends javax.swing.JFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 102, 0));
         jLabel6.setText("ID :");
 
+        jButton2.setForeground(new java.awt.Color(0, 102, 0));
         jButton2.setText("Excluir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,9 +107,16 @@ public class Administracao extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setForeground(new java.awt.Color(0, 102, 0));
         jButton3.setText("Listar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 102, 0));
         jLabel7.setText("Senha :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,28 +133,25 @@ public class Administracao extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel7))
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(jLabel7))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(senhaFuncionario)
-                                    .addComponent(Id_Funcionario, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                                    .addComponent(NomeFuncionario)
-                                    .addComponent(emailFuncionario)
-                                    .addComponent(EnderecoFuncionario)
-                                    .addComponent(NascimentoFuncionario)
-                                    .addComponent(SalarioFuncionario))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(Id_Funcionario, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                            .addComponent(NomeFuncionario)
+                            .addComponent(emailFuncionario)
+                            .addComponent(EnderecoFuncionario)
+                            .addComponent(NascimentoFuncionario)
+                            .addComponent(SalarioFuncionario)
+                            .addComponent(senhaFuncionario)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -217,6 +233,24 @@ public class Administracao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        FuncionarioController funcionarioController = new FuncionarioController();
+        ArrayList<Funcionario> funcList = funcionarioController.listarFuncionarios();
+        DefaultTableModel modelo = (DefaultTableModel) TabelaFunc.getModel();
+
+        for (Funcionario funcionario : funcList) {
+            String[] coluna = new String[7]; // Supondo que há 13 propriedades em um objeto Carro
+            coluna[0] = String.valueOf(funcionario.getId());
+            coluna[1] = funcionario.getNome();
+            coluna[2] = funcionario.getEmail();
+            coluna[3] = funcionario.getEndereco();
+            coluna[4] = funcionario.getDataNascimento();
+            coluna[5] = String.valueOf(funcionario.getSalario());
+            coluna[6] = funcionario.getSenha();
+            modelo.addRow(coluna);
+        }    
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +292,7 @@ public class Administracao extends javax.swing.JFrame {
     private javax.swing.JTextField NascimentoFuncionario;
     private javax.swing.JTextField NomeFuncionario;
     private javax.swing.JTextField SalarioFuncionario;
+    private javax.swing.JTable TabelaFunc;
     private javax.swing.JTextField emailFuncionario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -270,7 +305,6 @@ public class Administracao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField senhaFuncionario;
     // End of variables declaration//GEN-END:variables
 }

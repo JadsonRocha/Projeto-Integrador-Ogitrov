@@ -50,27 +50,34 @@ public class FazerVenda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaVendA = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setText("ID Carro :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 102, 0));
         jLabel2.setText("ID Moto:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 0));
         jLabel3.setText("ID Funcionario :");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 102, 0));
         jLabel4.setText("Comissao :");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 0));
         jLabel5.setText("Forma de pagamento :");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 102, 0));
         jLabel6.setText("Valor :");
 
+        jButton1.setForeground(new java.awt.Color(0, 102, 0));
         jButton1.setText("Fazer venda");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +85,7 @@ public class FazerVenda extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(0, 102, 0));
         jButton2.setText("Listar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +93,7 @@ public class FazerVenda extends javax.swing.JFrame {
             }
         });
 
+        TabelaVendA.setForeground(new java.awt.Color(0, 102, 0));
         TabelaVendA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -188,7 +197,7 @@ public class FazerVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    VendaController vendaController = new VendaController();
+        VendaController vendaController = new VendaController();
         ArrayList<Venda> vendaList = vendaController.listarVendas();
         DefaultTableModel modelo = (DefaultTableModel) TabelaVendA.getModel();
 

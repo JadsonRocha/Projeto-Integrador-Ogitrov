@@ -68,48 +68,62 @@ public class CRUDCarros extends javax.swing.JFrame {
         IdCarro = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 0));
         jLabel1.setText("ID Proprietario :");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 0));
         jLabel2.setText("Marca :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 0));
         jLabel3.setText("Fipe :");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(102, 102, 0));
         jLabel4.setText("Cor :");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 102, 0));
         jLabel5.setText("Combustivel :");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 0));
         jLabel6.setText("Tipo do carro :");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(102, 102, 0));
         jLabel7.setText("Valor Avaliado :");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(102, 102, 0));
         jLabel8.setText("Cambio :");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(102, 102, 0));
         jLabel9.setText("KM Rodados :");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(102, 102, 0));
         jLabel10.setText("IPVA :");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(102, 102, 0));
         jLabel11.setText("Modelo :");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(102, 102, 0));
         jLabel12.setText("Ano de Fabricação :");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(102, 102, 0));
         jLabel13.setText("Chassi :");
 
+        Cadastrar.setForeground(new java.awt.Color(102, 102, 0));
         Cadastrar.setText("Cadastrar");
         Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +131,7 @@ public class CRUDCarros extends javax.swing.JFrame {
             }
         });
 
+        Editar.setForeground(new java.awt.Color(102, 102, 0));
         Editar.setText("Editar");
         Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +139,7 @@ public class CRUDCarros extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setForeground(new java.awt.Color(102, 102, 0));
         jButton3.setText("Listar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +147,7 @@ public class CRUDCarros extends javax.swing.JFrame {
             }
         });
 
+        Excluir.setForeground(new java.awt.Color(102, 102, 0));
         Excluir.setText("Excluir");
         Excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,6 +155,7 @@ public class CRUDCarros extends javax.swing.JFrame {
             }
         });
 
+        TabelaCarro.setForeground(new java.awt.Color(102, 102, 0));
         TabelaCarro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -155,6 +173,7 @@ public class CRUDCarros extends javax.swing.JFrame {
         });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(102, 102, 0));
         jLabel14.setText("ID Carro(editar e excluir) :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

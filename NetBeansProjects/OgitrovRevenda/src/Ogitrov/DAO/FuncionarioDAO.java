@@ -5,6 +5,7 @@ import Ogitrov.Model.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 public class FuncionarioDAO {
@@ -40,6 +41,29 @@ public class FuncionarioDAO {
     public void excluirFuncionario(Funcionario func) {
         String sql = "DELETE FROM funcionario WHERE Id = " + func.getId();
         ConnectionMVC.executar(sql);
+    }
+
+    public ArrayList<Funcionario> listarFuncionarios() {
+        ArrayList<Funcionario> lista = new ArrayList<>();
+        String sql = "SELECT * FROM funcionario";
+        ResultSet rs = ConnectionMVC.consultar(sql);
+        if(rs != null){
+            try{
+                while( rs.next() ){
+                    int id = rs.getInt("Id");
+                    String nome = rs.getString("Nome");
+                    String email = rs.getString("Email");
+                    String endereco = rs.getString("Endereco");
+                    String dataNascimento = rs.getString("DataNascimento");
+                    double salario = rs.getDouble("Salario");
+                    String senha = rs.getString("Senha");
+                    Funcionario func = new Funcionario(id,nome,email,endereco,dataNascimento,salario,senha);
+                    lista.add(func);
+                }
+            }catch(Exception e){
+            }
+        }
+        return lista;
     }
     
    

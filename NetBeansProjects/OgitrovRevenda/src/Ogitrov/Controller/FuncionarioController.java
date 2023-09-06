@@ -2,6 +2,7 @@
 package Ogitrov.Controller;
 
 import Ogitrov.Model.Funcionario;
+import java.util.ArrayList;
 
 
 public class FuncionarioController {
@@ -34,5 +35,10 @@ public class FuncionarioController {
         Funcionario func = new Funcionario(idFunc);
         func.ExcluirFuncionario(func);
         return true;
+    }
+
+    public ArrayList<Funcionario> listarFuncionarios() {
+        Funcionario func = new Funcionario();
+        return func.listarFuncionarios();
     }
 }

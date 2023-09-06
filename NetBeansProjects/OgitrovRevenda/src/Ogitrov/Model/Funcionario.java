@@ -2,6 +2,7 @@
 package Ogitrov.Model;
 
 import Ogitrov.DAO.FuncionarioDAO;
+import java.util.ArrayList;
 
 
 public class Funcionario {
@@ -14,6 +15,9 @@ public class Funcionario {
     private double Salario;
     private String Senha;
 
+    public Funcionario() {
+    }
+    
     public Funcionario(String Nome, String Email, String Endereco, String DataNascimento, double Salario, String Senha) {
         this.Nome = Nome;
         this.Email = Email;
@@ -122,6 +126,11 @@ public class Funcionario {
     public void ExcluirFuncionario(Funcionario func) {
         FuncionarioDAO fDAO = new FuncionarioDAO();
         fDAO.excluirFuncionario(func);
+    }
+
+    public ArrayList<Funcionario> listarFuncionarios() {
+        FuncionarioDAO fDAO = new FuncionarioDAO();
+        return fDAO.listarFuncionarios();
     }
             
 }
