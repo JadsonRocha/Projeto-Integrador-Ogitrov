@@ -3,6 +3,7 @@ package Ogitrov.Controller;
 
 import Ogitrov.Model.Funcionario;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
 
 
 public class FuncionarioController {
@@ -41,4 +42,11 @@ public class FuncionarioController {
         Funcionario func = new Funcionario();
         return func.listarFuncionarios();
     }
+
+    public int VeriCargo(String email, String senha) {
+        Funcionario func = new Funcionario(email,senha);
+        return func.veriCargo(email,senha,id);
+    }
+
+    
 }

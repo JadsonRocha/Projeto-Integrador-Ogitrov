@@ -31,6 +31,7 @@ public class Cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CargoBotao = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -44,6 +45,9 @@ public class Cadastro extends javax.swing.JFrame {
         salariofunc = new javax.swing.JTextField();
         senhafunc = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        ADMBotao = new javax.swing.JRadioButton();
+        VendedorBotao = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -80,16 +84,33 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 102, 0));
         jLabel6.setText("Senha :");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel7.setText("Cargo :");
+
+        CargoBotao.add(ADMBotao);
+        ADMBotao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ADMBotao.setText("ADM");
+
+        CargoBotao.add(VendedorBotao);
+        VendedorBotao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        VendedorBotao.setText("Vendedor");
+        VendedorBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VendedorBotaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
                             .addComponent(jLabel1)
                             .addComponent(jLabel5)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,8 +125,17 @@ public class Cadastro extends javax.swing.JFrame {
                             .addComponent(enderecofunc)
                             .addComponent(nascimentofunc)
                             .addComponent(salariofunc)
-                            .addComponent(senhafunc))))
-                .addGap(0, 13, Short.MAX_VALUE))
+                            .addComponent(senhafunc)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(ADMBotao)
+                                .addGap(18, 18, 18)
+                                .addComponent(VendedorBotao)))
+                        .addGap(0, 13, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,9 +164,14 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(senhafunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(ADMBotao)
+                    .addComponent(VendedorBotao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -157,9 +192,14 @@ public class Cadastro extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showConfirmDialog(null,"ERROR:"+ e);
         }
+        
         Cadastro cad = new Cadastro();
         cad.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void VendedorBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendedorBotaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VendedorBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,6 +237,9 @@ public class Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton ADMBotao;
+    private javax.swing.ButtonGroup CargoBotao;
+    private javax.swing.JRadioButton VendedorBotao;
     private javax.swing.JTextField emailfunc;
     private javax.swing.JTextField enderecofunc;
     private javax.swing.JButton jButton1;
@@ -206,6 +249,7 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField nascimentofunc;
     private javax.swing.JTextField nomefunc;
     private javax.swing.JTextField salariofunc;

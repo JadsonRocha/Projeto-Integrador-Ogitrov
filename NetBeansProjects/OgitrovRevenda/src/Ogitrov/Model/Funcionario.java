@@ -3,6 +3,7 @@ package Ogitrov.Model;
 
 import Ogitrov.DAO.FuncionarioDAO;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
 
 
 public class Funcionario {
@@ -14,6 +15,9 @@ public class Funcionario {
     private String DataNascimento;
     private double Salario;
     private String Senha;
+    private int Cargo;
+
+    
 
     public Funcionario() {
     }
@@ -44,6 +48,9 @@ public class Funcionario {
 
     public Funcionario(int idFunc) {
         this.Id = idFunc;
+    }
+
+    public Funcionario(ButtonGroup CargoBotao) {
     }
 
 
@@ -104,6 +111,14 @@ public class Funcionario {
         this.Salario = Salario;
     }
     
+    public int getCargo() {
+        return Cargo;
+    }
+
+    public void setCargo(int Cargo) {
+        this.Cargo = Cargo;
+    }
+    
     public void cadastrarFuncionario(Funcionario funcionario){
         FuncionarioDAO fDAO = new FuncionarioDAO();
         fDAO.cadastrarFuncionario(funcionario);
@@ -132,5 +147,13 @@ public class Funcionario {
         FuncionarioDAO fDAO = new FuncionarioDAO();
         return fDAO.listarFuncionarios();
     }
+
+    public int veriCargo(String email, String senha) {
+        FuncionarioDAO fDAO = new FuncionarioDAO();
+        
+        return fDAO.PesquisarCargo(email,senha,id);
+    }
+
+    
             
 }

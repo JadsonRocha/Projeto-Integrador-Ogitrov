@@ -5,6 +5,7 @@
  */
 package Ogitrov.View;
 
+import Ogitrov.Controller.FuncionarioController;
 import javax.swing.JFrame;
 
 /**
@@ -18,6 +19,9 @@ public class SelecaoDeTelas extends javax.swing.JFrame {
      */
     public SelecaoDeTelas() {
         initComponents();
+       
+
+       jButton3.setEnabled(false);
     }
 
     /**
@@ -111,8 +115,8 @@ public class SelecaoDeTelas extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -160,6 +164,7 @@ public class SelecaoDeTelas extends javax.swing.JFrame {
         CRUDCarros frame = new CRUDCarros();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -201,6 +206,11 @@ public class SelecaoDeTelas extends javax.swing.JFrame {
                 new SelecaoDeTelas().setVisible(true);
             }
         });
+    }
+    
+    public int retornaUser(int CodUser)
+    {
+       return CodUser;    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

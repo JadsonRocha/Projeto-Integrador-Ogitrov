@@ -52,6 +52,7 @@ public class Administracao extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         senhaFuncionario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        CadastraFunc = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -62,7 +63,7 @@ public class Administracao extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Email", "Endereço", "Data Nascimento", "Salario"
+                "ID", "Nome", "Email", "Endereço", "Data Nascimento", "Salario", "Senha"
             }
         ));
         jScrollPane1.setViewportView(TabelaFunc);
@@ -97,7 +98,7 @@ public class Administracao extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 0));
-        jLabel6.setText("ID :");
+        jLabel6.setText("ID (editar e excluir)  :");
 
         jButton2.setForeground(new java.awt.Color(0, 102, 0));
         jButton2.setText("Excluir");
@@ -119,6 +120,14 @@ public class Administracao extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 102, 0));
         jLabel7.setText("Senha :");
 
+        CadastraFunc.setForeground(new java.awt.Color(0, 102, 0));
+        CadastraFunc.setText("Cadastrar");
+        CadastraFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastraFuncActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,6 +138,8 @@ public class Administracao extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CadastraFunc)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
@@ -144,7 +155,7 @@ public class Administracao extends javax.swing.JFrame {
                             .addComponent(jLabel7))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Id_Funcionario, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                            .addComponent(Id_Funcionario, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                             .addComponent(NomeFuncionario)
                             .addComponent(emailFuncionario)
                             .addComponent(EnderecoFuncionario)
@@ -189,7 +200,8 @@ public class Administracao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(CadastraFunc))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -237,6 +249,7 @@ public class Administracao extends javax.swing.JFrame {
         FuncionarioController funcionarioController = new FuncionarioController();
         ArrayList<Funcionario> funcList = funcionarioController.listarFuncionarios();
         DefaultTableModel modelo = (DefaultTableModel) TabelaFunc.getModel();
+        ((DefaultTableModel) TabelaFunc.getModel()).setRowCount(0);
 
         for (Funcionario funcionario : funcList) {
             String[] coluna = new String[7]; // Supondo que há 13 propriedades em um objeto Carro
@@ -250,6 +263,23 @@ public class Administracao extends javax.swing.JFrame {
             modelo.addRow(coluna);
         }    
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void CadastraFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastraFuncActionPerformed
+        boolean sucesso;
+        double salario = Double.parseDouble(SalarioFuncionario.getText().replace(',','.'));
+        
+        try{
+            FuncionarioController funcController = new FuncionarioController();
+            sucesso = funcController.cadastraFuncionario(NomeFuncionario.getText(), emailFuncionario.getText(), EnderecoFuncionario.getText(), NascimentoFuncionario.getText(), salario, senhaFuncionario.getText());
+            if(sucesso = true){
+                JOptionPane.showMessageDialog(null,"Cadastro com sucesso");
+            }else{
+                JOptionPane.showMessageDialog(null,"Falha no cadastro");
+            }
+        }catch(Exception e){
+            JOptionPane.showConfirmDialog(null,"ERROR:"+ e);
+        }
+    }//GEN-LAST:event_CadastraFuncActionPerformed
 
     /**
      * @param args the command line arguments
@@ -287,6 +317,7 @@ public class Administracao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CadastraFunc;
     private javax.swing.JTextField EnderecoFuncionario;
     private javax.swing.JTextField Id_Funcionario;
     private javax.swing.JTextField NascimentoFuncionario;

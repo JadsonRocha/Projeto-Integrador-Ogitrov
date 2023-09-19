@@ -377,6 +377,8 @@ public class CRUDCarros extends javax.swing.JFrame {
         CarroController carroController = new CarroController();
         ArrayList<Carro> carroList = carroController.listarCarros();
         DefaultTableModel modelo = (DefaultTableModel) TabelaCarro.getModel();
+       ((DefaultTableModel) TabelaCarro.getModel()).setRowCount(0);
+
 
         for (Carro carro : carroList) {
             String[] coluna = new String[14]; // Supondo que há 13 propriedades em um objeto Carro

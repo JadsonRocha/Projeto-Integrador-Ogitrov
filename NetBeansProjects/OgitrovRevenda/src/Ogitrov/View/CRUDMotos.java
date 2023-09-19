@@ -342,6 +342,7 @@ public class CRUDMotos extends javax.swing.JFrame {
         MotoController motoController = new MotoController();
         ArrayList<Moto> motoList = motoController.listarMotos();
         DefaultTableModel modelo = (DefaultTableModel) TabelaMoto.getModel();
+        ((DefaultTableModel) TabelaMoto.getModel()).setRowCount(0);
         
         for (Moto moto : motoList) {
             String[] coluna = new String[12]; // Supondo que há 13 propriedades em um objeto Carro

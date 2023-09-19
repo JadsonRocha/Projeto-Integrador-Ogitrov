@@ -99,7 +99,7 @@ public class FazerVenda extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "Id Proprietario", "Id carro", "Id moto", "Comissao", "Forma Pagamento", "Valor"
+                "Id", "Id Funcionario", "Id carro", "Id moto", "Comissao", "Forma Pagamento", "Valor"
             }
         ));
         jScrollPane1.setViewportView(TabelaVendA);
@@ -200,6 +200,7 @@ public class FazerVenda extends javax.swing.JFrame {
         VendaController vendaController = new VendaController();
         ArrayList<Venda> vendaList = vendaController.listarVendas();
         DefaultTableModel modelo = (DefaultTableModel) TabelaVendA.getModel();
+        ((DefaultTableModel) TabelaVendA.getModel()).setRowCount(0);
 
         for (Venda venda : vendaList) {
             String[] coluna = new String[7]; // Supondo que há 13 propriedades em um objeto Carro

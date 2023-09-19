@@ -15,6 +15,9 @@ public class FuncionarioDAO {
         ConnectionMVC.executar(sql);
     }
     
+    public int VeriCargo(){
+        return 1;
+    }
     
     public boolean PesquisarEmail (String email, String senha){
         String sql = "SELECT Email, Senha FROM funcionario WHERE Email = '"  + email+ "' AND Senha = '" + senha + "'";
@@ -64,6 +67,10 @@ public class FuncionarioDAO {
             }
         }
         return lista;
+    }
+
+    public boolean PesquisarCargo(String email, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
    
