@@ -151,7 +151,7 @@ public class Funcionario {
     public int veriCargo(String email, String senha) {
         FuncionarioDAO fDAO = new FuncionarioDAO();
         
-        return fDAO.PesquisarCargo(email,senha,id);
+        return fDAO.PesquisarCargo(email,senha); 
     }
 
     

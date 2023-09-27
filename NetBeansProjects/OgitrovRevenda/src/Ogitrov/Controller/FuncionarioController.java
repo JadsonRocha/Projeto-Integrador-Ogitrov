@@ -45,7 +45,7 @@ public class FuncionarioController {
 
     public int VeriCargo(String email, String senha) {
         Funcionario func = new Funcionario(email,senha);
-        return func.veriCargo(email,senha,id);
+        return func.veriCargo(email,senha); 
     }
 
     

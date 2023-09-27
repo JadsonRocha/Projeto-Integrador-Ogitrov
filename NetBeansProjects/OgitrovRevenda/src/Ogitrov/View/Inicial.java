@@ -6,6 +6,7 @@
 package Ogitrov.View;
 
 import Ogitrov.Controller.FuncionarioController;
+import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -40,7 +41,7 @@ public class Inicial extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        SenhaVeri = new javax.swing.JPasswordField();
+        SenhaVeri = new javax.swing.JTextField();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -72,6 +73,8 @@ public class Inicial extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ogitrov/View/Fotos/serjan-midili-Pe4w-IFIgRE-unsplash.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
 
+        SenhaVeri.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,6 +83,10 @@ public class Inicial extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -89,11 +96,7 @@ public class Inicial extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EmailVeri, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SenhaVeri)))
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jLabel1)))
+                            .addComponent(SenhaVeri))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -129,15 +132,15 @@ public class Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        int id;
         FuncionarioController Func = new FuncionarioController();
         
         if(Func.VeriFuncionario(EmailVeri.getText(), SenhaVeri.getText())){
-            Func.VeriCargo(EmailVeri.getText(), SenhaVeri.getText());
+            id = Func.VeriCargo(EmailVeri.getText(), SenhaVeri.getText());
             SelecaoDeTelas frame = new SelecaoDeTelas();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
-            frame.retornaUser(WIDTH);
+            frame.retornaUser(id);
         }else{
             JOptionPane.showMessageDialog(null, "Acesso negado");
         }
@@ -182,7 +185,7 @@ public class Inicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField EmailVeri;
-    private javax.swing.JPasswordField SenhaVeri;
+    private javax.swing.JTextField SenhaVeri;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

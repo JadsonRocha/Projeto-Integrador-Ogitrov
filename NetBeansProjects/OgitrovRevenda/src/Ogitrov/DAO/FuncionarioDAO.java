@@ -25,7 +25,7 @@ public class FuncionarioDAO {
         ResultSet rs = ConnectionMVC.consultar(sql);
         try{
             rs.next();
-        String mail = rs.getString("Email");
+            String mail = rs.getString("Email");
             
         if(rs != null)
             return true;
@@ -69,8 +69,23 @@ public class FuncionarioDAO {
         return lista;
     }
 
-    public boolean PesquisarCargo(String email, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int PesquisarCargo(String email, String senha) {
+        String sql = "SELECT ADM FROM funcionario WHERE Email = '"  + email+ "' AND Senha = '" + senha + "'";
+        
+        ResultSet rs = ConnectionMVC.consultar(sql);
+        int id=0;
+        try{
+            rs.next();
+            String Id = rs.getString("ADM");
+            
+            id = Integer.parseInt(Id);
+        
+        }catch(Exception e)
+        {
+            
+        }
+        
+        return id;
     }
     
    

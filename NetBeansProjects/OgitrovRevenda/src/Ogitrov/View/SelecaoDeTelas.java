@@ -17,11 +17,12 @@ public class SelecaoDeTelas extends javax.swing.JFrame {
     /**
      * Creates new form SelecaoDeTelas
      */
+      public int NUser;
     public SelecaoDeTelas() {
         initComponents();
        
 
-       jButton3.setEnabled(false);
+
     }
 
     /**
@@ -208,10 +209,15 @@ public class SelecaoDeTelas extends javax.swing.JFrame {
         });
     }
     
-    public int retornaUser(int CodUser)
+    public void retornaUser(int CodUser)
     {
-       return CodUser;    
+       this.NUser = CodUser; 
+        if(NUser == 0){
+            jButton3.setEnabled(false);
+        }
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
