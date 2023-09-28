@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class FuncionarioDAO {
     
     public void cadastrarFuncionario(Funcionario funcionario){
-        String sql = "INSERT INTO funcionario (Nome, Email, Endereco, DataNascimento, Salario, Senha) VALUES ( " + " '" + funcionario.getNome() +  "' , " + " '" + funcionario.getEmail()+  "' , " + " '" + funcionario.getEndereco()+  "' , " + " '" + funcionario.getDataNascimento()+  "' , " + " '" + funcionario.getSalario()+  "' , " + "  " + funcionario.getSenha()  + "  )  ";
+        String sql = "INSERT INTO funcionario (Nome, Email, Endereco, DataNascimento, Salario, Senha, ADM) VALUES ( " + " '" + funcionario.getNome() +  "' , " + " '" + funcionario.getEmail()+  "' , " + " '" + funcionario.getEndereco()+  "' , " + " '" + funcionario.getDataNascimento()+  "' , " + " '" + funcionario.getSalario()+  "' , " + " '" + funcionario.getSenha()+  "' , " + "  " + funcionario.getCargo()+ "  )  ";
         ConnectionMVC.executar(sql);
     }
     
@@ -37,7 +37,7 @@ public class FuncionarioDAO {
     }
 
     public void editaFuncionario(Funcionario func) {
-        String sql = "UPDATE funcionario SET Nome = '" + func.getNome()+ "', Email = '" + func.getEmail()+ "', Endereco = '" + func.getEndereco()+ "', DataNascimento = '" + func.getDataNascimento()+ "', Salario = '" + func.getSalario()+ "', Senha = '" + func.getSenha()+ "' WHERE Id = '" + func.getId()+ "'";
+        String sql = "UPDATE funcionario SET Nome = '" + func.getNome()+ "', Email = '" + func.getEmail()+ "', Endereco = '" + func.getEndereco()+ "', DataNascimento = '" + func.getDataNascimento()+ "', Salario = '" + func.getSalario()+ "', Senha = '" + func.getSenha()+ "', ADM = '" + func.getCargo()+ "' WHERE Id = '" + func.getId()+ "'";
         ConnectionMVC.executar(sql);
     }
 
@@ -60,7 +60,8 @@ public class FuncionarioDAO {
                     String dataNascimento = rs.getString("DataNascimento");
                     double salario = rs.getDouble("Salario");
                     String senha = rs.getString("Senha");
-                    Funcionario func = new Funcionario(id,nome,email,endereco,dataNascimento,salario,senha);
+                    int cargo = rs.getInt("ADM");
+                    Funcionario func = new Funcionario(id,nome,email,endereco,dataNascimento,salario,senha,cargo);
                     lista.add(func);
                 }
             }catch(Exception e){

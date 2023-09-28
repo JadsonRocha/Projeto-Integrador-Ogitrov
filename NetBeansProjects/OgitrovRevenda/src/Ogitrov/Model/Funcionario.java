@@ -22,18 +22,30 @@ public class Funcionario {
     public Funcionario() {
     }
     
-    public Funcionario(String Nome, String Email, String Endereco, String DataNascimento, double Salario, String Senha) {
+    public Funcionario(String Nome, String Email, String Endereco, String DataNascimento, double Salario, String Senha, int cargo) {
         this.Nome = Nome;
         this.Email = Email;
         this.Endereco = Endereco;
         this.DataNascimento = DataNascimento;
         this.Salario = Salario;
         this.Senha = Senha;
+        this.Cargo = cargo;
     }
 
     public Funcionario(String Email, String Senha) {
         this.Email = Email;
         this.Senha = Senha;
+    }
+
+    public Funcionario(int id, String nome, String email, String endereco, String datanascimento, double salario, String senha, int cargo) {
+        this.Id = id;
+        this.Nome = nome;
+        this.Email = email;
+        this.Endereco = endereco;
+        this.DataNascimento = datanascimento;
+        this.Salario = salario;
+        this.Senha = senha;
+        this.Cargo = cargo;
     }
 
     public Funcionario(int id, String nome, String email, String endereco, String datanascimento, double salario, String senha) {
@@ -44,8 +56,8 @@ public class Funcionario {
         this.DataNascimento = datanascimento;
         this.Salario = salario;
         this.Senha = senha;
+        
     }
-
     public Funcionario(int idFunc) {
         this.Id = idFunc;
     }

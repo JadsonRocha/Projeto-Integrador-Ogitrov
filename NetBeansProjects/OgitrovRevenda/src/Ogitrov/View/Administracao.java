@@ -33,6 +33,7 @@ public class Administracao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaFunc = new javax.swing.JTable();
         SalarioFuncionario = new javax.swing.JTextField();
@@ -53,6 +54,11 @@ public class Administracao extends javax.swing.JFrame {
         senhaFuncionario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         CadastraFunc = new javax.swing.JButton();
+        IsADM = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+
+        jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -63,7 +69,7 @@ public class Administracao extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Email", "Endereço", "Data Nascimento", "Salario", "Senha"
+                "ID", "Nome", "Email", "Endereço", "Data Nascimento", "Salario", "Senha", "Cargo"
             }
         ));
         jScrollPane1.setViewportView(TabelaFunc);
@@ -128,6 +134,14 @@ public class Administracao extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel8.setText("É ADM = 1 :");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 102, 0));
+        jLabel10.setText("NÃO É ADM = 0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,6 +157,7 @@ public class Administracao extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
@@ -152,17 +167,19 @@ public class Administracao extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel10))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IsADM)
                             .addComponent(Id_Funcionario, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                             .addComponent(NomeFuncionario)
                             .addComponent(emailFuncionario)
                             .addComponent(EnderecoFuncionario)
                             .addComponent(NascimentoFuncionario)
                             .addComponent(SalarioFuncionario)
-                            .addComponent(senhaFuncionario)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(senhaFuncionario))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -198,13 +215,19 @@ public class Administracao extends javax.swing.JFrame {
                     .addComponent(senhaFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(IsADM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(CadastraFunc))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -214,10 +237,10 @@ public class Administracao extends javax.swing.JFrame {
         boolean sucesso;
         double salario = Double.parseDouble(SalarioFuncionario.getText().replace(',','.'));
         int id = Integer.parseInt(Id_Funcionario.getText());
-        
+        int cargo = Integer.parseInt(IsADM.getText());
         try{
             FuncionarioController FuncionarioController = new FuncionarioController();
-            sucesso = FuncionarioController.editaFuncionario(id, NomeFuncionario.getText(), emailFuncionario.getText(), EnderecoFuncionario.getText(), NascimentoFuncionario.getText(), salario, senhaFuncionario.getText());
+            sucesso = FuncionarioController.editaFuncionario(id, NomeFuncionario.getText(), emailFuncionario.getText(), EnderecoFuncionario.getText(), NascimentoFuncionario.getText(), salario, senhaFuncionario.getText(), cargo);
             if(sucesso = true){
                 JOptionPane.showMessageDialog(null,"Editado com sucesso");
             }else{
@@ -252,7 +275,7 @@ public class Administracao extends javax.swing.JFrame {
         ((DefaultTableModel) TabelaFunc.getModel()).setRowCount(0);
 
         for (Funcionario funcionario : funcList) {
-            String[] coluna = new String[7]; // Supondo que há 13 propriedades em um objeto Carro
+            String[] coluna = new String[8]; 
             coluna[0] = String.valueOf(funcionario.getId());
             coluna[1] = funcionario.getNome();
             coluna[2] = funcionario.getEmail();
@@ -260,6 +283,7 @@ public class Administracao extends javax.swing.JFrame {
             coluna[4] = funcionario.getDataNascimento();
             coluna[5] = String.valueOf(funcionario.getSalario());
             coluna[6] = funcionario.getSenha();
+            coluna[7] = String.valueOf(funcionario.getCargo());
             modelo.addRow(coluna);
         }    
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -267,10 +291,10 @@ public class Administracao extends javax.swing.JFrame {
     private void CadastraFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastraFuncActionPerformed
         boolean sucesso;
         double salario = Double.parseDouble(SalarioFuncionario.getText().replace(',','.'));
-        
+        int cargo = Integer.parseInt(IsADM.getText());
         try{
             FuncionarioController funcController = new FuncionarioController();
-            sucesso = funcController.cadastraFuncionario(NomeFuncionario.getText(), emailFuncionario.getText(), EnderecoFuncionario.getText(), NascimentoFuncionario.getText(), salario, senhaFuncionario.getText());
+            sucesso = funcController.cadastraFuncionario(NomeFuncionario.getText(), emailFuncionario.getText(), EnderecoFuncionario.getText(), NascimentoFuncionario.getText(), salario, senhaFuncionario.getText(), cargo);
             if(sucesso = true){
                 JOptionPane.showMessageDialog(null,"Cadastro com sucesso");
             }else{
@@ -320,6 +344,7 @@ public class Administracao extends javax.swing.JFrame {
     private javax.swing.JButton CadastraFunc;
     private javax.swing.JTextField EnderecoFuncionario;
     private javax.swing.JTextField Id_Funcionario;
+    private javax.swing.JTextField IsADM;
     private javax.swing.JTextField NascimentoFuncionario;
     private javax.swing.JTextField NomeFuncionario;
     private javax.swing.JTextField SalarioFuncionario;
@@ -329,12 +354,15 @@ public class Administracao extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField senhaFuncionario;
     // End of variables declaration//GEN-END:variables

@@ -73,8 +73,6 @@ public class Inicial extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ogitrov/View/Fotos/serjan-midili-Pe4w-IFIgRE-unsplash.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
 
-        SenhaVeri.setText("jTextField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

@@ -8,9 +8,9 @@ import javax.swing.ButtonGroup;
 
 public class FuncionarioController {
      boolean f;
-    public boolean cadastraFuncionario(String nome, String email, String endereco, String datanascimento, double salario, String senha){
+    public boolean cadastraFuncionario(String nome, String email, String endereco, String datanascimento, double salario, String senha, int cargo){
         if(nome != null && email != null && endereco != null && datanascimento != null && salario != 0 && senha != null){
-            Funcionario func = new Funcionario(nome,email,endereco,datanascimento,salario,senha);
+            Funcionario func = new Funcionario(nome,email,endereco,datanascimento,salario,senha,cargo);
             func.cadastrarFuncionario(func);
             return true;
         }
@@ -26,8 +26,8 @@ public class FuncionarioController {
         return false;
     }
 
-    public boolean editaFuncionario(int id, String nome, String email, String endereco, String datanascimento, double salario, String senha) {
-        Funcionario func = new Funcionario(id,nome,email,endereco,datanascimento,salario,senha);
+    public boolean editaFuncionario(int id, String nome, String email, String endereco, String datanascimento, double salario, String senha, int cargo) {
+        Funcionario func = new Funcionario(id,nome,email,endereco,datanascimento,salario,senha, cargo);
         func.EditarFuncionario(func);
         return true;
     }
